@@ -47,5 +47,9 @@ module.exports = (req, res) => {
         ua.event('Repositories', 'Connect error').send()
       }
     })
-  })
+  }).catch((error) => {
+    var message = 'Error listing invitations for authenticated user.';
+    console.error(message, error);
+    res.status(500).send(message)
+  });
 }
